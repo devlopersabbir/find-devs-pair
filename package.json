@@ -1,6 +1,6 @@
 {
   "name": "find-devs-pair",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,7 @@
     "push": "drizzle-kit push:pg",
     "generate": "drizzle-kit generate:pg",
     "drop": "drizzle-kit drop",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio --host localhost --port 3001 --verbose --config drizzle.config.ts"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",

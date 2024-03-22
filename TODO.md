@@ -13,3 +13,5 @@ pnpm add -D drizzle-kit
 ```
 
 4. Setup docker compose on our project because I'm using docker for running PG in my local mechine
+5. Setup drizzle studio
+6. Using next auth for authentication
