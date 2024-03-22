@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/mode-toggle";
+import AuthProvider from "@/components/provider/session-provider";
+import { Header } from "./_components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,17 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div>
-            <ModeToggle />
-          </div>
+        <AuthProvider>
+          <Header />
           {children}
-        </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
