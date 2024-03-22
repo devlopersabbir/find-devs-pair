@@ -19,6 +19,7 @@ yarn.lock.yrn
 
 # production
 /build
+drizzle
 
 # misc
 .DS_Store
