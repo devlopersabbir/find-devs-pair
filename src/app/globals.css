@@ -74,3 +74,65 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* custom css that wil extends tailwinds */
+@layer utilities {
+  .career-paddings {
+    @apply sm:p-28 xs:p-8 px-6 py-12;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-start;
+  }
+
+  .flex-end {
+    @apply flex justify-end;
+  }
+
+  .heading1 {
+    @apply text-[64px] leading-[67.2px] font-bold;
+  }
+
+  .heading2 {
+    @apply font-bold text-[48px] leading-[50.4px];
+  }
+
+  .heading3 {
+    @apply font-bold sm:text-[32px] sm:leading-[33.6px] text-[28px] leading-[40px] tracking-[-0.25%];
+  }
+
+  .base-regular {
+    @apply text-[24px] font-normal leading-[31.2px];
+  }
+
+  .base-bold {
+    @apply text-[24px] font-semibold leading-[31.2px];
+  }
+
+  .paragraph-regular {
+    @apply text-[20px] font-normal leading-[26px];
+  }
+
+  .paragraph-semibold {
+    @apply text-[20px] font-semibold leading-[26px];
+  }
+
+  .body-regular {
+    @apply text-[16px] font-normal leading-[20.8px];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-red-500 to-purple-500 text-transparent bg-clip-text via-pink-500;
+  }
+  .text-gradient2 {
+    @apply bg-gradient-to-r from-purple-500 to-red-500 text-transparent bg-clip-text via-amber-500;
+  }
+}
