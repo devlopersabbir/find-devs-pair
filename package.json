@@ -1,6 +1,6 @@
 {
   "name": "find-devs-pair",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "FindDevs Pair application will help to pair programming with random devs online",
   "private": false,
   "author": {
@@ -51,6 +51,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.1",
     "simple-git": "^3.23.0",
+    "sonner": "^1.4.41",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"

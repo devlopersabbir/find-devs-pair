@@ -1,4 +1,6 @@
 "use client";
+
+import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -12,12 +14,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { z } from "zod";
 import { createRoomSchema } from "@/lib/validation";
 import { useTransition } from "react";
 import { Snipper } from "@/constants";
 import { createRoomAction } from "../create-room/action";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const CreateRoomForm = () => {
   const [isPending, startTransition] = useTransition();
@@ -28,6 +30,8 @@ const CreateRoomForm = () => {
     defaultValues: {
       name: "",
       description: "",
+      tags: "",
+      githubRepo: "",
     },
   });
 
@@ -35,10 +39,12 @@ const CreateRoomForm = () => {
     // TODO: send values to the server action for creating a new room
     startTransition(async () => {
       try {
-        await createRoomAction(values);
+        const res = await createRoomAction(values);
+        form.reset();
         router.push("/");
-      } catch (error) {
-        console.log(error);
+        toast.success(res);
+      } catch (error: any) {
+        toast.error(error.message);
       }
     });
   }

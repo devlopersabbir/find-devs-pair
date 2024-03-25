@@ -4,6 +4,7 @@ import "./globals.css";
 import AuthProvider from "@/components/provider/session-provider";
 import { Header } from "./_components/header";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           {children}
+          <Toaster />
         </AuthProvider>
       </body>
     </html>

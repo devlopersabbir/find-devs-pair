@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -8,35 +6,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { TRoom } from "@/schemas";
 import { GithubIcon } from "lucide-react";
-import { db } from "@/db";
 import { Heading3 } from "@/components/heading3";
-
-function RoomCard({ room }: { room: TRoom }) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{room.name}</CardTitle>
-        <CardDescription>{room.description}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        {room.githubRepo && (
-          <Link href={room.githubRepo}>
-            <GithubIcon className="mr-2" />
-            Github Project
-          </Link>
-        )}
-      </CardContent>
-      <CardFooter>
-        <Button>Join Room</Button>
-      </CardFooter>
-    </Card>
-  );
-}
+import { getRooms } from "@/lib/data-access/rooms";
+import Link from "next/link";
 
 export default async function Home() {
-  const rooms = await db.query.room.findMany();
+  const rooms = await getRooms();
   return (
     <main className="min-h-screen p-16">
       <div className="container-root">
@@ -46,10 +24,38 @@ export default async function Home() {
             <Link href="/create-room"> Create Room</Link>
           </Button>
         </div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 mt-10">
           {rooms && rooms.map((room) => <RoomCard key={room.id} room={room} />)}
         </div>
       </div>
     </main>
+  );
+}
+
+function RoomCard({ room }: { room: TRoom }) {
+  return (
+    <Card className="shadow">
+      <CardHeader>
+        <CardTitle>{room.name}</CardTitle>
+        <CardDescription>{room.description}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        {room.githubRepo && (
+          <Link
+            href={room.githubRepo}
+            className="flex font-bold hover:underline"
+            target="_blank"
+          >
+            <GithubIcon className="mr-2" />
+            Github Project
+          </Link>
+        )}
+      </CardContent>
+      <CardFooter>
+        <Button asChild>
+          <Link href={`/rooms/${room.id}`}>Join Room</Link>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
