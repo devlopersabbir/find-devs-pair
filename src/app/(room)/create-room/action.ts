@@ -6,10 +6,7 @@ import { createRoomSchema } from "@/lib/validation";
 import { TRoom, room } from "@/schemas";
 import { revalidatePath } from "next/cache";
 
-export async function createRoomAction(
-  inputs: Omit<TRoom, "id" | "userId">,
-  pathname?: string
-) {
+export async function createRoomAction(inputs: Omit<TRoom, "id" | "userId">) {
   const { success } = createRoomSchema.safeParse(inputs);
   if (!success) throw new Error("Invalid inputs");
 
