@@ -4,6 +4,8 @@ import {
   text,
   primaryKey,
   integer,
+  serial,
+  uuid,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 
@@ -58,3 +60,16 @@ export const verificationTokens = pgTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 );
+
+export const room = pgTable("room", {
+  id: uuid("id").defaultRandom().notNull().primaryKey(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, {
+      onDelete: "cascade",
+    }) /** if user is deleted then room will autometically deleted */,
+  language: text("language").notNull(),
+  githubRepo: text("githubRepo"),
+});
+
+export type TRoom = typeof room.$inferSelect;
