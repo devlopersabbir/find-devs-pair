@@ -77,6 +77,10 @@
 
 /* custom css that wil extends tailwinds */
 @layer utilities {
+  .container-root {
+    @apply container mx-auto py-4;
+  }
+
   .career-paddings {
     @apply sm:p-28 xs:p-8 px-6 py-12;
   }

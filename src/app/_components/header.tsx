@@ -38,8 +38,8 @@ export function Header() {
   const session = useSession();
   const isLoggedIn = !!session.data;
   return (
-    <header className="dark:bg-gray-900 py-4 bg-gray-50">
-      <div className="container mx-auto flex-between">
+    <header className="dark:bg-gray-900 bg-gray-50">
+      <div className="container-root flex-between">
         <Logo />
         <div className="flex gap-4">
           {isLoggedIn ? (
