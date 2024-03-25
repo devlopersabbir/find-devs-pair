@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TRoom } from "@/schemas";
-import { GithubIcon } from "lucide-react";
 import { Heading3 } from "@/components/heading3";
 import { getRooms } from "@/lib/data-access/rooms";
 import Link from "next/link";
+import { GithubRepoLink } from "../_components/github-repo-link";
+import TagList from "../_components/tag-list";
 
 export default async function Home() {
   const rooms = await getRooms();
@@ -34,22 +35,14 @@ export default async function Home() {
 
 function RoomCard({ room }: { room: TRoom }) {
   return (
-    <Card className="shadow">
+    <Card className="shadow flex justify-between items-start flex-col">
       <CardHeader>
-        <CardTitle>{room.name}</CardTitle>
+        <CardTitle className="leading-8 text-xl">{room.name}</CardTitle>
         <CardDescription>{room.description}</CardDescription>
       </CardHeader>
-      <CardContent>
-        {room.githubRepo && (
-          <Link
-            href={room.githubRepo}
-            className="flex font-bold hover:underline"
-            target="_blank"
-          >
-            <GithubIcon className="mr-2" />
-            Github Project
-          </Link>
-        )}
+      <CardContent className="flex flex-col gap-4">
+        <TagList tags={room.tags} />
+        {room.githubRepo && <GithubRepoLink link={room.githubRepo} />}
       </CardContent>
       <CardFooter>
         <Button asChild>

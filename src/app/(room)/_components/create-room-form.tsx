@@ -84,7 +84,7 @@ const CreateRoomForm = () => {
           name="githubRepo"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Github Repository</FormLabel>
+              <FormLabel>Github Repository (optional)</FormLabel>
               <FormControl>
                 <Input placeholder="Github Reponsitory link" {...field} />
               </FormControl>
@@ -98,7 +98,7 @@ const CreateRoomForm = () => {
           name="tags"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Primary Programming Language</FormLabel>
+              <FormLabel>Tag</FormLabel>
               <FormControl>
                 <Input placeholder="js, ts, nextjs" {...field} />
               </FormControl>
