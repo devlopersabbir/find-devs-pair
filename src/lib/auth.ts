@@ -4,6 +4,7 @@ import { DefaultSession, getServerSession } from "next-auth";
 import { Adapter } from "next-auth/adapters";
 import GitHubProvider from "next-auth/providers/github";
 import { AuthOptions } from "next-auth";
+import config from "@/config";
 
 declare module "next-auth" {
   interface Session extends DefaultSession {
@@ -20,8 +21,8 @@ export const authConfig = {
   },
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,
+      clientId: config.GITHUB_ID,
+      clientSecret: config.GITHUB_SECRET,
     }),
   ],
   callbacks: {

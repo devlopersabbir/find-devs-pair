@@ -1,9 +1,7 @@
 import { defineConfig } from "drizzle-kit";
-import dotenv from "dotenv";
-dotenv.config();
+import config from "@/config";
 
-export const DATABASE_URI = process.env.DATABASE_URI;
-if (!DATABASE_URI) throw new Error("DATABASE_URL is missing");
+if (!config.DATABASE_URI) throw new Error("DATABASE_URL is missing");
 
 export default defineConfig({
   schema: "./src/schemas/*",
@@ -11,6 +9,6 @@ export default defineConfig({
   driver: "pg",
   strict: true,
   dbCredentials: {
-    connectionString: DATABASE_URI,
+    connectionString: config.DATABASE_URI,
   },
 });

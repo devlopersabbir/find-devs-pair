@@ -5,6 +5,7 @@ import AuthProvider from "@/components/provider/session-provider";
 import { Header } from "./_components/header";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "sonner";
+import config from "@/config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
+// console.log(config);
 export default function RootLayout({
   children,
 }: Readonly<{

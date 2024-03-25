@@ -1,10 +1,10 @@
 import { NodePgDatabase, drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
-import { DATABASE_URI } from "../../drizzle.config";
 import * as schema from "@/schemas";
+import config from "@/config";
 
 const pool = new Pool({
-  connectionString: DATABASE_URI,
+  connectionString: config.DATABASE_URI,
 });
 declare global {
   var db: NodePgDatabase<typeof schema> | undefined;

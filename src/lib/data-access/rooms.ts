@@ -2,7 +2,6 @@ import { db } from "@/db";
 import { room } from "@/schemas";
 import { eq } from "drizzle-orm";
 import { unstable_noStore } from "next/cache";
-import { z } from "zod";
 
 export async function getRooms() {
   unstable_noStore();
