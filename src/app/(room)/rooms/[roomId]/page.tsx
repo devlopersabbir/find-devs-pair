@@ -1,5 +1,6 @@
 import { NotFound } from "@/components/not-found";
 import { getRoom } from "@/lib/data-access/rooms";
+import { Badge } from "@/components/ui/badge";
 import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -19,6 +20,10 @@ export default async function RoomPage({ params }: Props) {
         <div className="drop-shadow-lg border rounded p-4 flex gap-4 flex-col">
           <h1 className="paragraph-semibold">{room?.name!}</h1>
           <p className="text-base text-zinc-400">{room?.description!}</p>
+          <div className="flex flex-wrap">
+            <Badge>{room.tags}</Badge>
+          </div>
+
           {room.githubRepo && (
             <Link
               href={room.githubRepo}
