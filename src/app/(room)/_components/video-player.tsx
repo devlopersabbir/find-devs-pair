@@ -1,66 +1,54 @@
 "use client";
 
-import "@stream-io/stream-chat-css/dist/css/index.css";
 import {
-  Call,
   CallControls,
+  CallingState,
+  // ParticipantView,
   SpeakerLayout,
   StreamCall,
   StreamTheme,
   StreamVideo,
   StreamVideoClient,
+  useCallStateHooks,
 } from "@stream-io/video-react-sdk";
-import { useEffect, useState } from "react";
 import config from "@/config";
 import { useSession } from "next-auth/react";
-import { generateToken } from "@/app/(room)/rooms/action";
-import { useRouter } from "next/navigation";
 
-export default function DevFinderVideo({ roomId }: { roomId: string }) {
+type VideoProps = {
+  roomId: string;
+  token: string;
+};
+
+const DevFinderVideo = ({ roomId, token }: VideoProps) => {
   const session = useSession();
-  const router = useRouter();
-  const [client, setClient] = useState<StreamVideoClient | null>(null);
-  const [call, setCall] = useState<Call | null>(null);
 
-  useEffect(() => {
-    if (!roomId || !session.data) return;
-    const client = new StreamVideoClient({
-      apiKey: config.NEXT_PUBLIC_GET_STREAM_API_KEY,
-      user: {
-        id: session.data.user.id,
-        name: session.data.user.name ?? undefined,
-        image: session.data.user.image ?? undefined,
-      },
-      tokenProvider: () => generateToken(),
-    });
+  if (!roomId || !session.data) return;
+  const client = new StreamVideoClient({
+    apiKey: config.NEXT_PUBLIC_GET_STREAM_API_KEY,
+    user: {
+      id: session.data.user.id,
+      name: session.data.user.name ?? undefined,
+      image: session.data.user.image ?? undefined,
+    },
+    token,
+  });
+  const call = client.call("default", roomId);
+  call.join({ create: true });
 
-    const call = client.call("default", roomId);
-    call.join({ create: true });
-    setClient(client);
-    setCall(call);
+  if (!client || !call) return <h1>client and call is not define</h1>;
+  // const { useCallCallingState } = useCallStateHooks();
+  // const callingState = useCallCallingState();
+  // if (callingState !== CallingState.JOINED) return <h1>Loading.....</h1>;
 
-    return () => {
-      call
-        .leave()
-        .then(() => client.disconnectUser())
-        .catch(console.error);
-    };
-  }, [session, roomId]);
-
-  if (!client || !call) return;
   return (
     <StreamVideo client={client}>
-      <StreamTheme>
-        <StreamCall call={call}>
-          <SpeakerLayout />
-          <CallControls
-            onLeave={() => {
-              router.push("/");
-            }}
-          />
-          {/* <CallParticipantsList onClose={() => undefined} /> */}
-        </StreamCall>
-      </StreamTheme>
+      <StreamCall call={call}>
+        <StreamTheme>
+          <SpeakerLayout participantsBarPosition="bottom" />
+          <CallControls />
+        </StreamTheme>
+      </StreamCall>
     </StreamVideo>
   );
-}
+};
+export default DevFinderVideo;

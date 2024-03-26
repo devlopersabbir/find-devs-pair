@@ -140,3 +140,14 @@
     @apply bg-gradient-to-r from-purple-500 to-red-500 text-transparent bg-clip-text via-amber-500;
   }
 }
+
+.str-video {
+  background-color: #272a30;
+  color: #fff;
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+}
