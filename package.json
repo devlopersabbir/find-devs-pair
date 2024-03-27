@@ -1,6 +1,6 @@
 {
   "name": "find-devs-pair",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "FindDevs Pair application will help to pair programming with random devs online",
   "private": false,
   "author": {

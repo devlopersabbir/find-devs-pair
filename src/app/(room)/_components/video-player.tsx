@@ -37,11 +37,12 @@ const DevFinderVideo = ({ roomId, token }: VideoProps) => {
     return <NotFound text="Unexpected Error" />;
 
   const [client] = useState<StreamVideoClient>(() => {
-    return new StreamVideoClient({
+    const clnt = new StreamVideoClient({
       apiKey: config.NEXT_PUBLIC_GET_STREAM_API_KEY,
       user,
       token,
     });
+    return clnt;
   }); /** client state */
   const [call, setCall] = useState<Call | null>(null); /** call state */
 
@@ -51,7 +52,7 @@ const DevFinderVideo = ({ roomId, token }: VideoProps) => {
       create: true,
     });
     setCall(call);
-  }, [roomId]);
+  }, [roomId, client]);
 
   if (!call) return <NotFound text="Unexpected Error with call" />;
 
