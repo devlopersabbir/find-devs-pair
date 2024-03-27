@@ -4,6 +4,7 @@ import TagList from "@/app/_components/tag-list";
 import { GithubRepoLink } from "@/app/_components/github-repo-link";
 import DevFinderVideo from "@/app/(room)/_components/video-player";
 import { generateToken } from "../action";
+import { toast } from "sonner";
 
 type Props = {
   params: { roomId: string };
@@ -12,8 +13,7 @@ type Props = {
 export default async function RoomPage({ params }: Props) {
   const room = await getRoom(params.roomId);
   const token = await generateToken();
-  if (!room || !token)
-    return <NotFound text="No room found on this ID or Token" />;
+  if (!room || !token) return <NotFound text="No room found on this ID" />;
 
   return (
     <div className="grid grid-cols-4">

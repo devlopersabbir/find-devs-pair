@@ -52,7 +52,9 @@ const DevFinderVideo = ({ roomId, token }: VideoProps) => {
     });
     setCall(call);
   }, [roomId]);
+
   if (!call) return <NotFound text="Unexpected Error with call" />;
+
   return (
     <StreamVideo client={client}>
       <StreamCall call={call}>
@@ -62,6 +64,7 @@ const DevFinderVideo = ({ roomId, token }: VideoProps) => {
   );
 };
 export default DevFinderVideo;
+
 export const MyUILayout = () => {
   return (
     <StreamTheme>
