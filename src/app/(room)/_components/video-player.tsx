@@ -1,18 +1,21 @@
 "use client";
 
 import {
-  CallControls,
-  CallingState,
-  // ParticipantView,
-  SpeakerLayout,
-  StreamCall,
-  StreamTheme,
-  StreamVideo,
   StreamVideoClient,
-  useCallStateHooks,
+  User,
+  CallControls,
+  SpeakerLayout,
+  StreamTheme,
+  StreamCall,
+  StreamVideo,
+  Call,
 } from "@stream-io/video-react-sdk";
 import config from "@/config";
 import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { NotFound } from "@/components/not-found";
+import "./style.css";
+import "@stream-io/video-react-sdk/dist/css/styles.css";
 
 type VideoProps = {
   roomId: string;
@@ -21,34 +24,49 @@ type VideoProps = {
 
 const DevFinderVideo = ({ roomId, token }: VideoProps) => {
   const session = useSession();
+  if (!session.data) return;
 
-  if (!roomId || !session.data) return;
-  const client = new StreamVideoClient({
-    apiKey: config.NEXT_PUBLIC_GET_STREAM_API_KEY,
-    user: {
-      id: session.data.user.id,
-      name: session.data.user.name ?? undefined,
-      image: session.data.user.image ?? undefined,
-    },
-    token,
-  });
-  const call = client.call("default", roomId);
-  call.join({ create: true });
+  const user: User = {
+    id: session.data.user?.id,
+    name: session.data.user?.name!,
+    image: session.data.user?.image!,
+  };
+  console.log("user: ", user);
 
-  if (!client || !call) return <h1>client and call is not define</h1>;
-  // const { useCallCallingState } = useCallStateHooks();
-  // const callingState = useCallCallingState();
-  // if (callingState !== CallingState.JOINED) return <h1>Loading.....</h1>;
+  if (!roomId || !config.NEXT_PUBLIC_GET_STREAM_API_KEY)
+    return <NotFound text="Unexpected Error" />;
 
+  const [client] = useState<StreamVideoClient>(() => {
+    return new StreamVideoClient({
+      apiKey: config.NEXT_PUBLIC_GET_STREAM_API_KEY,
+      user,
+      token,
+    });
+  }); /** client state */
+  const [call, setCall] = useState<Call | null>(null); /** call state */
+
+  useEffect(() => {
+    const call = client.call("default", roomId);
+    call.join({
+      create: true,
+    });
+    setCall(call);
+  }, [roomId]);
+  if (!call) return <NotFound text="Unexpected Error with call" />;
   return (
     <StreamVideo client={client}>
       <StreamCall call={call}>
-        <StreamTheme>
-          <SpeakerLayout participantsBarPosition="bottom" />
-          <CallControls />
-        </StreamTheme>
+        <MyUILayout />
       </StreamCall>
     </StreamVideo>
   );
 };
 export default DevFinderVideo;
+export const MyUILayout = () => {
+  return (
+    <StreamTheme>
+      <SpeakerLayout participantsBarPosition="bottom" />
+      <CallControls />
+    </StreamTheme>
+  );
+};
