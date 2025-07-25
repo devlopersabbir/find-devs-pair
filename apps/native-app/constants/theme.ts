@@ -6,4 +6,5 @@ export const COLORS = {
   surfaceLight: "#2a2a2a",
   white: "#fff",
   gray: "#9ca3af",
+  red: "red",
 } as const;

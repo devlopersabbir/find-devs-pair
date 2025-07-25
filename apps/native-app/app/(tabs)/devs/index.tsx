@@ -25,7 +25,7 @@ const Devs = () => {
           }}
           cardIndex={0}
           infinite
-          stackSize={3}
+          stackSize={devs.length}
         />
       </View>
     </View>

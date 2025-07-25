@@ -5,36 +5,41 @@ const { height, width } = Dimensions.get("window");
 
 export const devStyles = StyleSheet.create({
   devContainer: {
-    padding: width * 0.03,
     flex: 1,
+    width: width * 0.95,
+    margin: "auto",
   },
+
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 10,
-    paddingHorizontal: 0.05,
+    paddingVertical: 10,
+    paddingHorizontal: 5,
   },
 
   mainViewContainer: {
-    flex: 1,
-    borderRadius: 20,
-    overflow: "hidden",
-    marginBottom: 40,
-  },
-  devCardView: {
-    flex: 1,
     borderWidth: 1,
     backgroundColor: COLORS.white,
     borderColor: COLORS.white,
-    borderRadius: 20,
     position: "relative",
+    overflow: "hidden",
+    height: height * 0.78,
+    borderRadius: 20,
   },
 
+  devCardView: {
+    borderWidth: 1,
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.white,
+    position: "relative",
+    overflow: "hidden",
+    height: height * 0.78,
+    borderRadius: 20,
+  },
   cardImage: {
     objectFit: "cover",
-    width: "100%",
-    flex: 1,
     borderRadius: 20,
+    height: height * 0.78,
   },
 
   overlayContainer: {
@@ -46,8 +51,8 @@ export const devStyles = StyleSheet.create({
 
   overlayTopContainer: {
     position: "absolute",
-    top: 20,
-    left: 20,
+    top: 15,
+    left: 15,
     flexDirection: "row",
     justifyContent: "center",
     gap: 10,
@@ -70,38 +75,21 @@ export const devStyles = StyleSheet.create({
     fontWeight: 500,
     color: COLORS.gray,
   },
-
+  // Overlay button container
   overlayButtonContainer: {
-    position: "relative",
-    flexDirection: "column",
-    justifyContent: "space-between",
     alignItems: "center",
   },
   overlayBottom: {
+    position: "absolute",
     flexDirection: "row",
     gap: 20,
-    bottom: 30,
-    position: "absolute",
-    zIndex: 2,
+    bottom: 35,
+    zIndex: 3,
   },
   actionButton: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.white,
     shadowColor: COLORS.background,
     borderRadius: 100,
     padding: 5,
   },
-
-  // contentWrapper: {
-  //   paddingHorizontal: width * 0.03,
-  //   paddingTop: 15,
-  // },
-  // sectionTitle: {
-  //   fontSize: 20,
-  //   fontWeight: "bold",
-  //   marginBottom: 10,
-  // },
-  // paragraph: {
-  //   fontSize: 16,
-  //   color: "#333",
-  // },
 });

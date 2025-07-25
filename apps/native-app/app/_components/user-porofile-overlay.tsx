@@ -1,6 +1,7 @@
 import { devStyles } from "@/styles/devs.style";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-import { DevProps } from "./dev-card";
+import { Text, TouchableOpacity, View } from "react-native";
+import { blurhash, DevProps } from "./dev-card";
+import { Image } from "expo-image";
 
 export default function UserProfileOverlay({ dev }: DevProps) {
   const handleSubmit = async () => {};
@@ -10,13 +11,12 @@ export default function UserProfileOverlay({ dev }: DevProps) {
       onPress={handleSubmit}
     >
       <Image
-        source={{
-          uri: dev.image,
-        }}
+        source={dev.image}
+        placeholder={{ blurhash }}
         style={devStyles.userAvater}
+        contentFit="cover"
+        transition={1000}
         alt={dev.name}
-        width={50}
-        height={50}
       />
       <View>
         <Text style={devStyles.profileName}>

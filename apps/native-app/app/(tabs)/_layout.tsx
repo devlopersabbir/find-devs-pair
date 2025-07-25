@@ -11,7 +11,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.gray,
         tabBarStyle: {
-          backgroundColor: "#000",
+          backgroundColor: "transparent",
           borderTopWidth: 0,
           position: "absolute",
           elevation: 0,
@@ -24,11 +24,10 @@ export default function TabLayout() {
         name="profile/index"
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-circle" size={size} color={color} />
+            <Ionicons name="person" size={size} color={color} />
           ),
         }}
       />
-
       <Tabs.Screen
         name="map/index"
         options={{
