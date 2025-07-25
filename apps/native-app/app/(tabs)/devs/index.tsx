@@ -1,12 +1,14 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const Devs = () => {
+const Index = () => {
   return (
     <View>
-      <Text> Devs </Text>
+      {/* top */}
+      <Text>Index</Text>
+      {/* middle */}
     </View>
   );
 };
 
-export default Devs;
+export default Index;

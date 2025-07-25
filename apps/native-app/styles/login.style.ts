@@ -57,6 +57,7 @@ export const styles = StyleSheet.create({
   googleButton: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: COLORS.white,
     paddingVertical: 16,
     paddingHorizontal: 24,
@@ -80,10 +81,15 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginRight: 12,
   },
-  googlebuttonText: {
-    color: COLORS.surface,
-    fontWeight: "600",
+  googleButtonText: {
     fontSize: 16,
+    fontWeight: "600",
+    color: COLORS.surface,
   },
-  termsText: { color: COLORS.gray, fontSize: 12, fontWeight: "600" },
+  termsText: {
+    textAlign: "center",
+    fontSize: 12,
+    color: COLORS.gray,
+    maxWidth: 280,
+  },
 });

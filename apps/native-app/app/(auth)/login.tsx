@@ -1,11 +1,18 @@
+import { useTransition } from "react";
 import { COLORS } from "@/constants";
 import { styles } from "@/styles/login.style";
 import { Ionicons } from "@expo/vector-icons";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { router } from "expo-router";
 
 const Login = () => {
+  const [pending, startTransition] = useTransition();
   const handleLogin = async () => {
-    alert("login");
+    startTransition(async () => {
+      setTimeout(() => {
+        router.push("/(tabs)/devs");
+      }, 2000);
+    });
   };
   return (
     <View style={styles.container}>
@@ -30,11 +37,12 @@ const Login = () => {
           style={styles.googleButton}
           activeOpacity={0.9}
           onPress={handleLogin}
+          disabled={pending}
         >
           <View style={styles.googleIconContainer}>
             <Ionicons name="logo-google" size={20} color={COLORS.surface} />
           </View>
-          <Text style={styles.googlebuttonText}>Continue With Goolge</Text>
+          <Text style={styles.googleButtonText}>Continue With Goolge</Text>
         </TouchableOpacity>
         <Text style={styles.termsText}>
           By Contributing, you agree to our Terms and Privacy Policy
