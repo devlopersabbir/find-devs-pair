@@ -4,7 +4,7 @@ import { devStyles } from "@/styles/devs.style";
 import { Ionicons } from "@expo/vector-icons";
 import { View, TouchableOpacity } from "react-native";
 
-export default function DevHeader() {
+export default function MenuHeader() {
   const openSettings = () => {};
   return (
     <View style={devStyles.headerContainer}>

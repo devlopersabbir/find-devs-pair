@@ -1,10 +1,13 @@
 import { devStyles } from "@/styles/devs.style";
 import { Text, TouchableOpacity, View } from "react-native";
-import { blurhash, DevProps } from "./dev-card";
+import { DevProps } from "./dev-card";
 import { Image } from "expo-image";
-
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 export default function UserProfileOverlay({ dev }: DevProps) {
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    alert("hello profile");
+  };
   return (
     <TouchableOpacity
       style={devStyles.overlayTopContainer}

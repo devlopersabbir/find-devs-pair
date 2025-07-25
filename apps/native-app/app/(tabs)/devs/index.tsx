@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { devStyles } from "@/styles/devs.style";
-import DevHeader from "@/app/_components/dev-header";
+import MenuHeader from "@/app/_components/menu-header";
 import { devs } from "@/constants";
 import Swiper from "react-native-deck-swiper";
 import DevCard from "@/app/_components/dev-card";
@@ -9,7 +9,7 @@ import DevCard from "@/app/_components/dev-card";
 const Devs = () => {
   return (
     <View style={devStyles.devContainer}>
-      <DevHeader />
+      <MenuHeader />
       <View style={devStyles.mainViewContainer}>
         <Swiper
           cardVerticalMargin={0}

@@ -2,6 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const globalStyles = StyleSheet.create({
   applicationLogo: {},
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+  },
   shadow: {
     position: "absolute",
     zIndex: 1,
