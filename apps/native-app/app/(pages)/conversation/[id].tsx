@@ -1,4 +1,4 @@
-import { devs } from "@/constants";
+import { Devs, devs } from "@/constants";
 import { convStyles } from "@/styles/conversation.style";
 import { useLocalSearchParams } from "expo-router";
 import {
@@ -37,14 +37,14 @@ export default function Conversation() {
             scrollViewRef.current?.scrollToEnd({ animated: true })
           }
         >
-          <Messageging isSender={true} />
-          <Messageging isSender={false} />
-          <Messageging isSender={true} />
-          <Messageging isSender={false} />
-          <Messageging isSender={false} />
-          <Messageging isSender={true} />
-          <Messageging isSender={false} />
-          <Messageging isSender={false} />
+          <Messageging dev={dev} isSender={true} />
+          <Messageging dev={dev} isSender={true} />
+          <Messageging dev={dev} isSender={true} />
+          <Messageging dev={dev} isSender={true} />
+          <Messageging dev={dev} isSender={false} />
+          <Messageging dev={dev} isSender={false} />
+          <Messageging dev={dev} isSender={false} />
+          <Messageging dev={dev} isSender={true} />
         </ScrollView>
         <MessageFooter />
       </View>

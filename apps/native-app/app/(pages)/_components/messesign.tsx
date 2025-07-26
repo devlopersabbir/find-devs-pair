@@ -1,16 +1,17 @@
-import { devs, Devs } from "@/constants";
+import { Devs } from "@/constants";
 import { convStyles } from "@/styles/conversation.style";
 import { Image } from "expo-image";
 import { Text, View } from "react-native";
 
 type Props = {
+  dev: Devs;
   isSender: boolean;
 };
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
-export default function Messageging({ isSender }: Props) {
+export default function Messageging({ isSender, dev }: Props) {
   return (
     <View
       style={[
@@ -26,12 +27,12 @@ export default function Messageging({ isSender }: Props) {
       >
         {isSender && (
           <Image
-            source={devs[0].image}
+            source={dev.image}
             placeholder={{ blurhash }}
             style={convStyles.avater}
             contentFit="cover"
             transition={1000}
-            alt={devs[0].name}
+            alt={dev.name}
           />
         )}
         <View style={convStyles.messageWrapper}>
