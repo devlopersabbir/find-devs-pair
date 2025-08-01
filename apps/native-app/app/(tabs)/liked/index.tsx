@@ -1,10 +1,12 @@
 import LikeTab from "@/app/_components/liked/like-tab";
 import ViewTab from "@/app/_components/liked/view-tab";
+import { COLORS } from "@/constants";
+import { globalStyles } from "@/styles/global.style";
 import { likeStyles } from "@/styles/liked.style";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Text, View, useWindowDimensions } from "react-native";
-import { TabView } from "react-native-tab-view";
+import { TabBar, TabView } from "react-native-tab-view";
 
 const routes = [
   { key: "like", title: "Like" } as const,
@@ -36,6 +38,7 @@ const Liked = () => {
           }
           onIndexChange={setIndex}
           initialLayout={{ width: layout.width }}
+          // renderTabBar={(props) => <TabBar {...props} /> } // TODO: need to update tabbar bg and color too
         />
       </View>
     </View>
