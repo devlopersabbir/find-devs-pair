@@ -37,9 +37,8 @@ export const globalStyles = StyleSheet.create({
     right: 0,
     width: 10,
   },
-
   tapBarColor: {
     backgroundColor: COLORS.white,
     color: "black",
-  },
+  }
 });
