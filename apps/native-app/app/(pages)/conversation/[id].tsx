@@ -24,7 +24,7 @@ export default function Conversation() {
     <KeyboardAvoidingView
       style={convStyles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 45 : 0}
     >
       <View style={convStyles.container}>
         <MessageHeader dev={dev} />

@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants";
 import { StyleSheet } from "react-native";
 
 export const globalStyles = StyleSheet.create({
@@ -36,4 +37,8 @@ export const globalStyles = StyleSheet.create({
     right: 0,
     width: 10,
   },
+  tapBarColor: {
+    backgroundColor: COLORS.white,
+    color: "black",
+  }
 });
