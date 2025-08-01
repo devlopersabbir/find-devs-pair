@@ -9,9 +9,7 @@ const LikeTab = () => {
       <FlatList
         data={devs}
         keyExtractor={(dev) => dev.id}
-        renderItem={({ item, index }) => (
-          <ViewCard key={index} dev={item} isLike={true} />
-        )}
+        renderItem={({ item }) => <ViewCard dev={item} isLike={true} />}
       />
     </View>
   );
