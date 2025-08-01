@@ -8,10 +8,10 @@ const ProfileHeader = () => {
   const editProfile = () => {};
   return (
     <View style={devStyles.headerContainer}>
-      <Ionicons name="settings" color={COLORS.surface} size={25} />
+      <Ionicons name="settings" color={COLORS.white} size={25} />
       <ApplicationLogo />
       <TouchableOpacity activeOpacity={0.9} onPress={editProfile}>
-        <Ionicons name="pencil" size={25} color={COLORS.surface} />
+        <Ionicons name="pencil" size={25} color={COLORS.white} />
       </TouchableOpacity>
     </View>
   );

@@ -5,11 +5,11 @@ const { height, width } = Dimensions.get("window");
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    // backgroundColor: COLORS.background,
   },
   brandSection: {
     alignItems: "center",
-    marginTop: height * 0.12,
+    marginTop: height * 0.05,
   },
   logoContainer: {
     width: 60,
@@ -48,11 +48,17 @@ export const styles = StyleSheet.create({
     maxHeight: 280,
   },
   // login section
+  continueWrapper: {
+    alignItems: "center",
+    gap: 5,
+    marginBottom: 5,
+  },
   loginSection: {
     width: "100%",
     paddingHorizontal: 24,
     paddingBottom: 40,
     alignItems: "center",
+    gap: 7,
   },
   googleButton: {
     flexDirection: "row",
@@ -62,7 +68,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 14,
-    marginBottom: 20,
     width: "100%",
     maxWidth: 300,
     shadowColor: "#000",

@@ -6,6 +6,7 @@ const { height, width } = Dimensions.get("window");
 export const chatStyles = StyleSheet.create({
   chatContainer: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   header: {
     alignItems: "center",
@@ -28,6 +29,7 @@ export const chatStyles = StyleSheet.create({
   actionActive: {
     fontWeight: "600",
     fontSize: 16,
+    color: COLORS.gray,
   },
 
   devsView: {
@@ -35,6 +37,7 @@ export const chatStyles = StyleSheet.create({
     marginBottom: 45,
     marginTop: 5,
     paddingHorizontal: 15,
+    color: COLORS.white,
   },
   //   chat card
   chatCardWrapper: {

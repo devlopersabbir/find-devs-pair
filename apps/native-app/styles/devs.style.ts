@@ -4,6 +4,9 @@ import { COLORS } from "@/constants";
 const { height, width } = Dimensions.get("window");
 
 export const devStyles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.background,
+  },
   devContainer: {
     flex: 1,
     width: width * 0.95,
@@ -15,11 +18,11 @@ export const devStyles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 10,
     paddingHorizontal: 5,
+    backgroundColor: COLORS.background,
   },
 
   mainViewContainer: {
     borderWidth: 1,
-    backgroundColor: COLORS.white,
     borderColor: COLORS.white,
     position: "relative",
     overflow: "hidden",
@@ -29,7 +32,6 @@ export const devStyles = StyleSheet.create({
 
   devCardView: {
     borderWidth: 1,
-    backgroundColor: COLORS.white,
     borderColor: COLORS.white,
     position: "relative",
     overflow: "hidden",
