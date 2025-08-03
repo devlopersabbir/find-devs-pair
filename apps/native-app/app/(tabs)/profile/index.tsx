@@ -44,7 +44,16 @@ export default function Profile() {
             });
           }}
         >
-          <Text>Logout</Text>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 30,
+              textAlign: "center",
+              marginTop: 30,
+            }}
+          >
+            Logout
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

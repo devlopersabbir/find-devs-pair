@@ -1,13 +1,17 @@
-import { COLORS } from "@/constants";
+import { baseURL, COLORS } from "@/constants";
 import { styles } from "@/styles/login.style";
 import { Ionicons } from "@expo/vector-icons";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useRouter } from "expo-router";
-import { useSSO } from "@clerk/clerk-expo";
+import { useAuth, useSSO, useUser } from "@clerk/clerk-expo";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Login = () => {
   const { startSSOFlow } = useSSO();
   const router = useRouter();
+  const { isLoaded: authLoaded, isSignedIn, userId, getToken } = useAuth();
+  const { isLoaded: userLoaded, user } = useUser();
 
   const googleLogin = async () => {
     try {
@@ -15,8 +19,8 @@ const Login = () => {
         strategy: "oauth_google",
       });
       if (setActive && createdSessionId) {
-        setActive({ session: createdSessionId });
-        router.replace("/(tabs)/profile");
+        // setActive({ session: createdSessionId });
+        await setActive({ session: createdSessionId });
       }
     } catch (err) {
       alert("fail to sinin");
@@ -37,6 +41,31 @@ const Login = () => {
       console.error(JSON.stringify(err, null, 2));
     }
   };
+
+  useEffect(() => {
+    (async () => {
+      if (authLoaded && isSignedIn && userLoaded && user) {
+        await getToken();
+        const payload = {
+          email: user.primaryEmailAddress?.emailAddress,
+          fullName: user.fullName,
+          avatarUrl: user.imageUrl,
+        };
+
+        try {
+          const { data } = await axios.post(
+            `${baseURL}/users/register`,
+            payload
+          );
+          console.log(data);
+
+          router.replace("/(tabs)/profile");
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    })();
+  }, [authLoaded, isSignedIn, userLoaded, user]);
   return (
     <View style={styles.container}>
       <View style={styles.brandSection}>
@@ -67,7 +96,7 @@ const Login = () => {
             </View>
             <Text style={styles.googleButtonText}>Continue With Goolge</Text>
           </TouchableOpacity>
-          <Text
+          {/* <Text
             style={{ fontWeight: "bold", fontSize: 18, color: COLORS.gray }}
           >
             OR
@@ -81,7 +110,7 @@ const Login = () => {
               <Ionicons name="logo-github" size={20} color={COLORS.surface} />
             </View>
             <Text style={styles.googleButtonText}>Continue With Github</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         <Text style={styles.termsText}>
