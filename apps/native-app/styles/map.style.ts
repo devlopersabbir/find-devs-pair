@@ -6,6 +6,7 @@ const { height, width } = Dimensions.get("window");
 export const mapStyles = StyleSheet.create({
   mapContainer: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   mapView: {
     height: height * 0.79,

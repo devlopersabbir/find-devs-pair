@@ -31,10 +31,10 @@ export default function ChatCard({ dev }: Props) {
         <View style={chatStyles.greenBatti} />
       </View>
       <View style={chatStyles.chatCardInfo}>
-        <Text style={{ color: COLORS.background, fontWeight: "600" }}>
+        <Text style={{ color: COLORS.white, fontWeight: "600" }}>
           {dev.name}
         </Text>
-        <Text style={{ color: COLORS.surface, fontWeight: "500" }}>
+        <Text style={{ color: COLORS.gray, fontWeight: "500" }}>
           Last message...
         </Text>
       </View>

@@ -1,7 +1,7 @@
 import ChatCard from "@/app/_components/chats/chat-card";
 import DevsFilter from "@/app/_components/chats/devs-filter";
 import ApplicationLogo from "@/components/shared/application-logo";
-import { devs } from "@/constants";
+import { COLORS, devs } from "@/constants";
 import { chatStyles } from "@/styles/chats.style";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
@@ -25,7 +25,7 @@ const Chat = () => {
             setOpen((prev) => !prev);
           }}
         >
-          <Ionicons name="filter" size={30} />
+          <Ionicons name="filter" size={30} color={COLORS.gray} />
         </TouchableOpacity>
       </View>
       <FlatList
