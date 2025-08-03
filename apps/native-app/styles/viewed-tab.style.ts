@@ -5,6 +5,7 @@ const { height, width } = Dimensions.get("window");
 export const viewTabStyle = StyleSheet.create({
   container: {
     padding: 10,
+    backgroundColor: COLORS.surface,
   },
   card: {
     flexDirection: "row",
@@ -43,6 +44,7 @@ export const viewTabStyle = StyleSheet.create({
   cardName: {
     fontSize: 17,
     fontWeight: "semibold",
+    color: COLORS.white,
   },
   lastSeen: {
     color: COLORS.gray,

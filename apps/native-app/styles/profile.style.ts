@@ -6,10 +6,12 @@ const { height, width } = Dimensions.get("window");
 export const profileStyle = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   wrapper: {
-    marginTop: 10,
+    paddingTop: 10,
     alignItems: "center",
+    backgroundColor: COLORS.surface,
   },
   profileView: {
     flexDirection: "column",
@@ -37,7 +39,7 @@ export const profileStyle = StyleSheet.create({
     marginTop: 5,
   },
   generelIcon: {
-    color: COLORS.surfaceLight,
+    color: COLORS.gray,
   },
-  generelText: { fontSize: 20, fontWeight: "bold" },
+  generelText: { fontSize: 20, fontWeight: "bold", color: COLORS.white },
 });

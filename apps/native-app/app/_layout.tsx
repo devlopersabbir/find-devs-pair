@@ -1,15 +1,27 @@
-import LayoutProvider from "@/components/layout-provider";
+import LayoutProvider from "@/providers/layout-provider";
 import BaseProvider from "@/providers/base-provider";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { ClerkProvider, ClerkLoaded } from "@clerk/clerk-expo";
+import { tokenCache } from "@clerk/clerk-expo/token-cache";
+import { COLORS } from "@/constants";
 
+const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+if (!publishableKey) throw new Error("Clerk key is required!");
 export default function RootLayout() {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: "transparent" }}>
+    <ClerkProvider publishableKey={publishableKey!} tokenCache={tokenCache}>
+      <ClerkLoaded>
         <BaseProvider>
-          <LayoutProvider />
+          <SafeAreaProvider>
+            <SafeAreaView
+              style={{ flex: 1, backgroundColor: COLORS.background }}
+            >
+              <LayoutProvider />
+            </SafeAreaView>
+          </SafeAreaProvider>
         </BaseProvider>
-      </SafeAreaView>
-    </SafeAreaProvider>
+      </ClerkLoaded>
+    </ClerkProvider>
   );
 }
