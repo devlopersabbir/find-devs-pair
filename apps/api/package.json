@@ -17,7 +17,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "clean": "rm -rf src/drizzle/migrations && tsx src/drizzle/clean.ts",
+    "db:migrate": "drizzle-kit generate && tsx src/drizzle/migrate.ts",
+    "db:push": "drizzle-kit push --config=drizzle.config.ts",
+    "db:studio": "drizzle-kit studio --config=drizzle.config.ts"
   },
   "dependencies": {
     "@keyv/redis": "^5.1.0",
@@ -32,7 +36,9 @@
     "cacheable": "^1.10.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
+    "drizzle-orm": "^0.44.4",
     "keyv": "^5.5.0",
+    "pg": "^8.16.3",
     "redis": "^5.7.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
@@ -50,7 +56,9 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.7",
+    "@types/pg": "^8.15.5",
     "@types/supertest": "^6.0.2",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.2",
@@ -63,6 +71,7 @@
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.20.3",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
