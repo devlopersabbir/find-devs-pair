@@ -8,15 +8,14 @@ export const RedisOptions: CacheModuleAsyncOptions = {
   isGlobal: true,
   imports: [ConfigModule],
   useFactory: async (configService: ConfigService) => {
-    const host = configService.get<string>("REDIS_HOST");
-    const port = parseInt(configService.get<string>("REDIS_PORT")!, 10);
+    const REDIS_URL = configService.get<string>("REDIS_URL");
 
     return {
       stores: [
         new Keyv({
           store: new CacheableMemory({ ttl: 3600000 }),
         }),
-        createKeyv(`redis://${host}:${port}`),
+        createKeyv(REDIS_URL),
       ],
     };
   },

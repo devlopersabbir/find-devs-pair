@@ -3,7 +3,7 @@ import { AppModule } from "./app.module";
 import { ValidationPipe } from "@nestjs/common";
 import "reflect-metadata";
 
-async function bootstrap() {
+(async () => {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
@@ -11,5 +11,4 @@ async function bootstrap() {
 
   const PORT = process.env.PORT ?? 3000;
   await app.listen(PORT);
-}
-bootstrap();
+})();
